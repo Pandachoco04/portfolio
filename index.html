@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Dan Adriane Ravancho, BSIT student focused on cybersecurity, web development, and IT projects.">
+  <meta name="theme-color" content="#0b0d12">
+  <title>Dan Adriane Ravancho | IT & Cybersecurity Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Dan Adriane Ravancho home">
+        <span class="brand-mark">DR</span><span>dan<span class="accent">.</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certification">Certification</a>
+        <a href="#contact" class="nav-cta">Contact me <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero section container" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> OPEN TO LEARNING & OPPORTUNITIES</p>
+        <h1>Hi, I'm <span class="gradient-text">Dan Adriane<br class="desktop-break"> Ravancho.</span></h1>
+        <p class="hero-subtitle">BSIT Student <span>/</span> Cybersecurity <span>/</span> Web Development</p>
+        <p class="hero-description">I’m an Information Technology student building practical skills in web development, Linux, networking, and cybersecurity. I enjoy learning how systems work and solving technical problems methodically.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">Explore my projects <span aria-hidden="true">↓</span></a>
+          <a class="button button-secondary" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-meta">
+          <span><span class="meta-icon">⌁</span> Pangasinan, Philippines</span>
+          <span><span class="meta-icon">⌘</span> BS Information Technology</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Decorative initials illustration">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="hero-glow"></div>
+        <div class="initials-card">
+          <span class="card-label">PORTFOLIO / 2026</span>
+          <div class="big-initials">DR<span>.</span></div>
+          <div class="card-bottom"><span>BUILD</span><span>LEARN</span><span>SECURE</span></div>
+        </div>
+        <div class="floating-chip chip-code"><span class="chip-dot"></span> &lt;/&gt; Code</div>
+        <div class="floating-chip chip-security"><span class="chip-symbol">⌑</span> Security mindset</div>
+      </div>
+    </section>
+
+    <section class="quick-stats container" aria-label="Portfolio highlights">
+      <div><span class="stat-number">01</span><span class="stat-label">Capstone project</span></div>
+      <div><span class="stat-number">IT</span><span class="stat-label">Academic focus</span></div>
+      <div><span class="stat-number">CCP</span><span class="stat-label">Certification</span></div>
+      <div><span class="stat-number">∞</span><span class="stat-label">Always learning</span></div>
+    </section>
+
+    <section class="section container" id="about">
+      <div class="section-heading">
+        <p class="eyebrow">01 / ABOUT</p>
+        <h2>Curious by nature.<br><span class="muted-heading">Technical by practice.</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I’m a third-year Bachelor of Science in Information Technology student at the University of Pangasinan. My interests bring together building useful web experiences and understanding the systems and networks behind them.</p>
+          <p>I’m developing my portfolio through academic work, hands-on labs, and ongoing practice. I value clear documentation, careful troubleshooting, and responsible security testing performed only with authorization.</p>
+          <a class="text-link" href="#contact">Let's connect <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="about-panel">
+          <div class="panel-top"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span><span class="panel-filename">about-me.txt</span></div>
+          <div class="code-lines">
+            <p><span class="line-no">01</span><span class="code-key">name</span> <span class="code-punc">=</span> <span class="code-string">"Dan Adriane Ravancho"</span></p>
+            <p><span class="line-no">02</span><span class="code-key">field</span> <span class="code-punc">=</span> <span class="code-string">"Information Technology"</span></p>
+            <p><span class="line-no">03</span><span class="code-key">interests</span> <span class="code-punc">=</span> [</p>
+            <p class="indent"><span class="code-string">"Web Development"</span>,</p>
+            <p class="indent"><span class="code-string">"Cybersecurity"</span>,</p>
+            <p class="indent"><span class="code-string">"Linux & Networking"</span></p>
+            <p>]</p>
+            <p><span class="line-no">08</span><span class="code-comment"># Learn, build, document, improve.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">02 / TOOLKIT</p>
+          <h2>Skills I'm <span class="gradient-text">building with.</span></h2>
+          <p class="section-intro">A snapshot of the tools and areas I’m learning and practicing. Proficiency varies by tool and task.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card"><div class="skill-icon orange">&lt;/&gt;</div><h3>Web Development</h3><p>Building and styling web pages and adding browser interactions.</p><div class="skill-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></article>
+          <article class="skill-card"><div class="skill-icon purple">⌘</div><h3>Operating Systems</h3><p>Working with Linux environments and command-line workflows.</p><div class="skill-tags"><span>Linux</span><span>Kali Linux</span></div></article>
+          <article class="skill-card"><div class="skill-icon green">⌁</div><h3>Networking</h3><p>Learning core networking concepts and troubleshooting connectivity.</p><div class="skill-tags"><span>IP & DNS</span><span>Connectivity</span></div></article>
+          <article class="skill-card"><div class="skill-icon blue">◇</div><h3>Cybersecurity</h3><p>Applying security fundamentals and responsible, authorized testing practices.</p><div class="skill-tags"><span>Security basics</span><span>Lab practice</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="projects">
+      <div class="section-heading projects-heading">
+        <div><p class="eyebrow">03 / SELECTED WORK</p><h2>Projects & <span class="muted-heading">practice.</span></h2></div>
+        <span class="project-count">02 ENTRIES</span>
+      </div>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-art meditrack-art">
+            <div class="meditrack-preview">
+              <div class="meditrack-preview-head"><span class="meditrack-mark">M</span><div><b>MediTrack</b><small>Patient Information System</small></div><span class="source-label">SOURCE REVIEWED</span></div>
+              <div class="meditrack-feature-grid">
+                <div class="meditrack-feature"><span class="feature-symbol">▤</span><b>Patient records</b><small>patients.php</small></div>
+                <div class="meditrack-feature"><span class="feature-symbol">◷</span><b>Appointments</b><small>appointment_form.php</small></div>
+                <div class="meditrack-feature"><span class="feature-symbol">✚</span><b>Doctor directory</b><small>doctors.php</small></div>
+                <div class="meditrack-feature"><span class="feature-symbol">▦</span><b>Reports</b><small>reports.php</small></div>
+              </div>
+              <div class="meditrack-database"><span>MYSQL DATABASE</span><b>patients</b><b>doctors</b><b>appointments</b><b>records</b></div>
+            </div>
+            <span class="art-label">PHP / MYSQL / WEB APPLICATION</span>
+          </div>
+          <div class="project-body">
+            <div class="project-topline"><span class="project-type">Academic team project</span><span class="project-index">01</span></div>
+            <h3>MediTrack Patient Information System</h3>
+            <p>A web-based healthcare information system built with PHP and MySQL to organize patient details, doctor information, appointments, and patient records. The uploaded source includes role-specific dashboards, account flows, and reporting pages.</p>
+            <div class="skill-tags"><span>PHP</span><span>MySQL</span><span>HTML/CSS/JS</span><span>XAMPP</span></div>
+            <button class="project-details" data-project="meditrack" type="button">View project details <span aria-hidden="true">↗</span></button>
+          </div>
+        </article>
+        <article class="project-card">
+          <div class="project-art terminal-art">
+            <div class="terminal-window"><div class="terminal-bar"><span></span><span></span><span></span><b>network-lab — terminal</b></div><div class="terminal-content"><p><i>$</i> ping example.test</p><p class="terminal-dim">Checking connectivity…</p><p><i>$</i> nslookup example.test</p><p class="terminal-green">Name resolution output reviewed</p><p><i>$</i> ip addr</p><p class="terminal-dim">Local interface details inspected</p><p class="terminal-cursor">▌</p></div></div>
+            <span class="art-label">LAB / PRACTICE</span>
+          </div>
+          <div class="project-body">
+            <div class="project-topline"><span class="project-type">Practice / lab work</span><span class="project-index">02</span></div>
+            <h3>Network & Security Labs</h3>
+            <p>A collection of learning exercises focused on networking checks, Linux commands, and cybersecurity fundamentals. Add only the labs you have personally completed, with screenshots and actual results.</p>
+            <div class="skill-tags"><span>Linux</span><span>Networking</span><span>Security fundamentals</span></div>
+            <button class="project-details" data-project="labs" type="button">View project notes <span aria-hidden="true">↗</span></button>
+          </div>
+        </article>
+      </div>
+      <p class="project-disclaimer"><span aria-hidden="true">ⓘ</span> The MediTrack panel above is a source-based portfolio summary, not a screenshot of the running application. Upload genuine screenshots of the working system to show its actual interface.</p>
+    </section>
+
+    <section class="section section-alt" id="certification">
+      <div class="container certification-layout">
+        <div class="section-heading">
+          <p class="eyebrow">04 / CREDENTIALS</p>
+          <h2>Learning with <span class="muted-heading">purpose.</span></h2>
+          <p class="section-intro">Certifications are one part of a portfolio. Practical projects and the ability to explain your work matter, too.</p>
+        </div>
+        <article class="cert-card">
+          <div class="cert-emblem"><span>✓</span></div>
+          <div class="cert-content"><span class="cert-label">CERTIFICATION</span><h3>Certified Cybersecurity Professional (CCP)</h3><p>Certification reported by the portfolio owner. Add the issuer, issue date, credential ID (if applicable), and a certificate image after verifying the details.</p><span class="cert-status"><span></span> Details to be verified / completed</span></div>
+          <div class="cert-watermark">CCP</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container contact-section" id="contact">
+      <div class="contact-card">
+        <div class="contact-orb"></div>
+        <p class="eyebrow">05 / CONTACT</p>
+        <h2>Have a project or<br>opportunity in mind?</h2>
+        <p class="contact-description">I'm open to discussing suitable IT projects, internships, and opportunities to learn and contribute.</p>
+        <a class="button button-primary" href="mailto:adrianeravancho02@gmail.com?subject=Portfolio%20Inquiry">Email me <span aria-hidden="true">↗</span></a>
+        <div class="contact-details">
+          <span class="contact-email">adrianeravancho02@gmail.com</span>
+          <button class="copy-email" id="copyEmail" type="button">Copy email <span aria-hidden="true">⧉</span></button>
+        </div>
+        <p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner"><a class="brand" href="#home"><span class="brand-mark">DR</span><span>dan<span class="accent">.</span></span></a><p>Designed and built with HTML, CSS & JavaScript.</p><a href="#home" class="back-top">Back to top ↑</a></div>
+    <div class="container footer-bottom"><span>© <span id="year"></span> Dan Adriane Ravancho</span><span>Keep learning. Build responsibly.</span></div>
+  </footer>
+
+  <dialog class="project-dialog" id="projectDialog" aria-labelledby="dialogTitle">
+    <div class="dialog-header"><span class="eyebrow">PROJECT NOTES</span><button type="button" class="dialog-close" id="dialogClose" aria-label="Close project notes">×</button></div>
+    <h2 id="dialogTitle">Project notes</h2>
+    <div id="dialogContent"></div>
+    <button class="button button-secondary dialog-done" type="button" id="dialogDone">Close</button>
+  </dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
