@@ -25,7 +25,6 @@ navLinks.querySelectorAll("a").forEach(link => {
   });
 });
 
-// Highlight the navigation item for the section currently in view.
 const observedSections = document.querySelectorAll("main section[id]");
 const navAnchors = navLinks.querySelectorAll('a[href^="#"]');
 if ("IntersectionObserver" in window) {
@@ -59,18 +58,126 @@ document.getElementById("copyEmail").addEventListener("click", async () => {
 });
 
 const projectNotes = {
-  capstone: {
-    title: "School Announcement Information App",
-    html: `<p><strong>Purpose:</strong> Centralize school announcements so users can find important information in one place.</p>
-      <p><strong>Project status:</strong> Capstone project. Update this section to accurately describe the current implementation.</p>
-      <p><strong>Add before publishing:</strong></p><ul><li>Your personal responsibilities and contributions</li><li>Languages, frameworks, database, and tools actually used</li><li>Features completed and features still in progress</li><li>Screenshots or a demo link, if approved for public sharing</li><li>Authorized security checks performed, if relevant</li></ul>
-      <p>Do not publish private school data, credentials, or vulnerabilities that have not been approved for disclosure.</p>`
+  meditrack: {
+    title: "MediTrack Patient Information System",
+    html: `
+      <p><strong>Purpose:</strong> Manage patient data, doctor records, appointment scheduling, and reporting workflows in a single healthcare platform.</p>
+      <p><strong>Tools used:</strong> PHP, MySQL, HTML, CSS, JavaScript, XAMPP.</p>
+      <p><strong>What it demonstrates:</strong></p>
+      <ul>
+        <li>Structuring a healthcare workflow around core user tasks</li>
+        <li>Cleaning and organizing patient, doctor, and appointment data</li>
+        <li>Creating a practical web interface for business operations</li>
+      </ul>
+    `
   },
-  labs: {
-    title: "Network & Security Labs",
-    html: `<p><strong>Purpose:</strong> Document hands-on practice with operating systems, networking, and cybersecurity fundamentals.</p>
-      <p><strong>Suggested evidence:</strong></p><ul><li>Commands used, such as ping, nslookup, and ipconfig/ip addr</li><li>Sanitized terminal screenshots and actual outputs</li><li>What the results mean and what you learned</li><li>Steps taken to reproduce and troubleshoot the issue</li></ul>
-      <p>Only list labs you have actually completed. Keep testing within systems you own or have explicit permission to assess.</p>`
+  clinic: {
+    title: "Greenlane Clinic Website",
+    html: `
+      <p><strong>Purpose:</strong> Present a trustworthy healthcare brand and encourage appointment bookings.</p>
+      <p><strong>Focus:</strong> Calm aesthetic, clear service categories, and strong patient communication.</p>
+      <ul>
+        <li>Medical service hierarchy and trust-building sections</li>
+        <li>Conversion-focused schedule and call-to-action flow</li>
+        <li>Clean responsive design for service-based businesses</li>
+      </ul>
+    `
+  },
+  wellness: {
+    title: "FitLife Studio",
+    html: `
+      <p><strong>Purpose:</strong> Showcase a fitness or wellness brand through a motivational landing page.</p>
+      <p><strong>Focus:</strong> Modern visuals, strong benefits messaging, and guided conversion sections.</p>
+      <ul>
+        <li>Strong visual identity for personal training or coaching</li>
+        <li>Marketing-focused modules for value communication</li>
+        <li>Responsive design with clear user flow</li>
+      </ul>
+    `
+  },
+  property: {
+    title: "Harbor Estates",
+    html: `
+      <p><strong>Purpose:</strong> Present a premium real-estate concept with appealing listings and trust-building sections.</p>
+      <p><strong>Focus:</strong> Highlighting property quality, discoverability, and buyer confidence.</p>
+      <ul>
+        <li>Showcase layout for home listings and property highlights</li>
+        <li>Luxury visual presentation and responsive cards</li>
+        <li>Clear calls to action for inquiries and property viewing</li>
+      </ul>
+    `
+  },
+  restaurant: {
+    title: "Sora Bistro Website",
+    html: `
+      <p><strong>Purpose:</strong> Build a premium, hospitality-style concept for dining and reservations.</p>
+      <p><strong>Focus:</strong> Menus, atmosphere, and customer experience presentation.</p>
+      <ul>
+        <li>Food and atmosphere storytelling</li>
+        <li>Reservation-oriented layout and menu visibility</li>
+        <li>Branding centered around quality and experience</li>
+      </ul>
+    `
+  },
+  agency: {
+    title: "Northstar Studio",
+    html: `
+      <p><strong>Purpose:</strong> Present a creative agency brand with focus on strategy, design, and growth solutions.</p>
+      <p><strong>Focus:</strong> Professional positioning and conversion-friendly service messaging.</p>
+      <ul>
+        <li>Service portfolio display and credibility structure</li>
+        <li>Brand-building layout with modern visuals</li>
+        <li>Clear positioning for future sales or outreach</li>
+      </ul>
+    `
+  },
+  construction: {
+    title: "Stonefield Build",
+    html: `
+      <p><strong>Purpose:</strong> Provide a construction or service-business concept with trust and professionalism at the center.</p>
+      <p><strong>Focus:</strong> Reliability, clear services, and client reassurance.</p>
+      <ul>
+        <li>Service presentation for trade or local business work</li>
+        <li>Practical layout that supports lead generation</li>
+        <li>Professional design suited for business credibility</li>
+      </ul>
+    `
+  },
+  salon: {
+    title: "Veloura Studio",
+    html: `
+      <p><strong>Purpose:</strong> Build a refined beauty or wellness brand concept with a premium visual identity.</p>
+      <p><strong>Focus:</strong> Luxury aesthetic and customer trust cues.</p>
+      <ul>
+        <li>Wellness and beauty-focused brand storytelling</li>
+        <li>Elegant style for service-based businesses</li>
+        <li>Responsive layout for beauty and appointments</li>
+      </ul>
+    `
+  },
+  travel: {
+    title: "Pacific Trails",
+    html: `
+      <p><strong>Purpose:</strong> Showcase travel experiences, destinations, and lifestyle-driven itineraries.</p>
+      <p><strong>Focus:</strong> Immersive visuals and package communication.</p>
+      <ul>
+        <li>Destination storytelling and travel brand presentation</li>
+        <li>Planning-focused layout for packages or experiences</li>
+        <li>Clean interface for tourism or travel businesses</li>
+      </ul>
+    `
+  },
+  commerce: {
+    title: "Nexa Market",
+    html: `
+      <p><strong>Purpose:</strong> Model a conversion-focused e-commerce storefront with featured categories and product visuals.</p>
+      <p><strong>Focus:</strong> Shopping flow, product discovery, and purchasing intent.</p>
+      <ul>
+        <li>Product-first layout and category grouping</li>
+        <li>Modern storefront structure for online sales</li>
+        <li>Strong call-to-action areas and user-focused browsing</li>
+      </ul>
+    `
   }
 };
 
@@ -88,6 +195,7 @@ document.querySelectorAll("[data-project]").forEach(button => {
 function closeDialog() {
   if (projectDialog.open) projectDialog.close();
 }
+
 document.getElementById("dialogClose").addEventListener("click", closeDialog);
 document.getElementById("dialogDone").addEventListener("click", closeDialog);
 projectDialog.addEventListener("click", event => {
