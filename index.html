@@ -1,1970 +1,321 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
-
-:root {
-  --bg: #0b0d12;
-  --bg-soft: #10131b;
-  --panel: #141823;
-  --panel-2: #181d29;
-  --panel-3: #1d2433;
-  --text: #f2f4fa;
-  --muted: #9ba3b5;
-  --muted-2: #6f788b;
-  --line: rgba(255,255,255,.09);
-  --accent: #9b8cff;
-  --accent-2: #66e3d0;
-  --warm: #ffb86c;
-  --danger: #ff6b7d;
-  --success: #7ae6c3;
-  --shadow: 0 30px 70px rgba(7,10,18,.55);
-  --radius: 24px;
-  --container: 1200px;
-}
-
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 92px; }
-body {
-  margin: 0;
-  background:
-    radial-gradient(circle at top left, rgba(155,140,255,.15), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(102,227,208,.12), transparent 28%),
-    var(--bg);
-  color: var(--text);
-  font-family: "Manrope", sans-serif;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-a, button { font: inherit; }
-a { color: inherit; text-decoration: none; }
-img { max-width: 100%; display: block; }
-button { cursor: pointer; }
-
-.container {
-  width: min(100% - 48px, var(--container));
-  margin-inline: auto;
-}
-
-.section {
-  padding-block: clamp(80px, 8vw, 120px);
-}
-.section-alt {
-  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.skip-link {
-  position: absolute;
-  left: 18px;
-  top: -50px;
-  background: var(--text);
-  color: var(--bg);
-  padding: 10px 14px;
-  border-radius: 12px;
-  z-index: 100;
-  transition: top .2s ease;
-}
-.skip-link:focus { top: 18px; }
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 60;
-  background: rgba(11,13,18,.82);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--line);
-}
-
-.nav {
-  height: 76px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  letter-spacing: -.04em;
-  font-size: 1.1rem;
-}
-.brand-mark {
-  display: inline-grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #0c1119;
-  border-radius: 10px;
-  font-size: .8rem;
-  box-shadow: 0 12px 28px rgba(155, 140, 255, .35);
-}
-.accent { color: var(--accent-2); }
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-}
-.nav-links a {
-  color: var(--muted);
-  font-size: .95rem;
-  transition: color .2s ease;
-}
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--text);
-}
-.nav-cta {
-  color: var(--text) !important;
-  padding: 10px 16px;
-  border: 1px solid rgba(155,140,255,.38);
-  border-radius: 999px;
-  background: rgba(155,140,255,.08);
-}
-
-.menu-toggle {
-  display: none;
-  border: 1px solid var(--line);
-  background: transparent;
-  border-radius: 10px;
-  padding: 8px 10px;
-  width: 44px;
-  height: 44px;
-}
-.menu-toggle span {
-  display: block;
-  width: 18px;
-  height: 2px;
-  background: var(--text);
-  margin: 4px auto;
-  border-radius: 999px;
-}
-
-.hero {
-  min-height: 650px;
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  align-items: center;
-  gap: 55px;
-  padding-top: 92px;
-  padding-bottom: 86px;
-}
-.eyebrow {
-  font-family: "DM Mono", monospace;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  font-size: 10px;
-  color: var(--muted-2);
-  margin: 0 0 18px;
-}
-.status-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent-2);
-  margin-right: 10px;
-  box-shadow: 0 0 18px rgba(102, 227, 208, .8);
-}
-
-h1 {
-  margin: 0;
-  font-size: clamp(3.2rem, 6vw, 5.3rem);
-  line-height: .95;
-  letter-spacing: -.07em;
-}
-.gradient-text {
-  background: linear-gradient(135deg, #f7f1ff 0%, #b9b5ff 35%, #7fe4d6 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.hero-subtitle {
-  margin: 18px 0 16px;
-  font-weight: 700;
-  color: var(--muted);
-  letter-spacing: -.03em;
-}
-.hero-subtitle span {
-  color: var(--accent-2);
-}
-.hero-description {
-  max-width: 620px;
-  color: var(--muted);
-  font-size: 1.05rem;
-}
-.hero-actions {
-  margin-top: 26px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border-radius: 999px;
-  padding: 15px 22px;
-  font-weight: 700;
-  border: 1px solid transparent;
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.button:hover { transform: translateY(-1px); }
-.button-primary {
-  background: linear-gradient(135deg, var(--accent), #7aa1ff);
-  color: #0b0d12;
-  box-shadow: 0 18px 30px rgba(155, 140, 255, .3);
-}
-.button-secondary {
-  background: transparent;
-  border-color: var(--line);
-  color: var(--text);
-}
-.hero-meta {
-  margin-top: 26px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  color: var(--muted);
-  font-size: .94rem;
-}
-.meta-icon {
-  color: var(--accent-2);
-  margin-right: 7px;
-}
-
-.hero-visual {
-  position: relative;
-  min-height: 430px;
-  display: grid;
-  place-items: center;
-}
-.orbit {
-  position: absolute;
-  border: 1px solid rgba(155,140,255,.18);
-  border-radius: 50%;
-}
-.orbit-one {
-  width: 360px;
-  height: 360px;
-}
-.orbit-two {
-  width: 460px;
-  height: 460px;
-}
-.hero-glow {
-  position: absolute;
-  inset: 50% auto auto 50%;
-  transform: translate(-50%, -50%);
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, rgba(155,140,255,.22), rgba(102,227,208,.06) 55%, transparent 70%);
-  filter: blur(8px);
-}
-.initials-card {
-  position: relative;
-  width: min(100%, 380px);
-  background: linear-gradient(180deg, rgba(27,31,43,.9), rgba(12,15,21,.96));
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 28px;
-  box-shadow: var(--shadow);
-  padding: 24px 22px 18px;
-  z-index: 1;
-}
-.card-label {
-  display: block;
-  color: var(--muted-2);
-  letter-spacing: .14em;
-  font-size: 10px;
-  font-family: "DM Mono", monospace;
-}
-.big-initials {
-  margin-top: 26px;
-  font-size: clamp(5rem, 9vw, 7rem);
-  line-height: .76;
-  letter-spacing: -.08em;
-  font-weight: 800;
-}
-.big-initials span { color: var(--accent-2); }
-.card-bottom {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--muted);
-  font-family: "DM Mono", monospace;
-  letter-spacing: .12em;
-  font-size: 10px;
-  margin-top: 18px;
-}
-.floating-chip {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(12,15,21,.82);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 10px 14px;
-  font-size: .85rem;
-  color: var(--text);
-  box-shadow: 0 18px 35px rgba(0,0,0,.15);
-}
-.chip-code { left: 0; bottom: 15%; }
-.chip-security { right: 8%; top: 12%; }
-.chip-symbol { color: var(--accent-2); }
-.chip-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent-2);
-}
-
-.quick-stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding-block: 22px;
-}
-.quick-stats > div {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  min-height: 60px;
-  padding-left: 18px;
-  border-left: 1px solid var(--line);
-}
-.quick-stats > div:first-child { border-left: none; }
-.stat-number {
-  font-family: "DM Mono", monospace;
-  font-size: 1.4rem;
-  color: var(--accent-2);
-  font-weight: 600;
-}
-.stat-label {
-  color: var(--muted);
-  font-size: .9rem;
-}
-
-.section-heading {
-  margin-bottom: 38px;
-}
-.section-heading h2 {
-  margin: 0;
-  font-size: clamp(2.2rem, 4vw, 3.5rem);
-  line-height: 1.1;
-  letter-spacing: -.06em;
-}
-.muted-heading { color: var(--muted); }
-.section-intro {
-  max-width: 600px;
-  font-size: 1.02rem;
-  color: var(--muted);
-  margin-top: 16px;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0,1fr));
-  gap: 18px;
-}
-.service-card {
-  background: rgba(20,24,35,.72);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  padding: 22px 20px;
-  box-shadow: 0 18px 35px rgba(0,0,0,.10);
-  transition: transform .2s ease, border-color .2s ease;
-}
-.service-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(155,140,255,.25);
-}
-.service-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(155,140,255,.18), rgba(102,227,208,.18));
-  border: 1px solid rgba(155,140,255,.18);
-  color: var(--accent-2);
-  font-size: .8rem;
-  font-weight: 800;
-  font-family: "DM Mono", monospace;
-  margin-bottom: 18px;
-}
-.service-card h3 {
-  margin: 0 0 10px;
-  font-size: 1.26rem;
-  letter-spacing: -.04em;
-}
-.service-card p {
-  margin: 0;
-  color: var(--muted);
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap: 52px;
-  align-items: center;
-}
-.about-text p {
-  color: var(--muted);
-  margin: 0 0 16px;
-  font-size: 1.04rem;
-}
-.text-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text);
-  font-weight: 700;
-}
-.about-panel {
-  background: rgba(20,24,35,.8);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-.panel-top {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255,255,255,.03);
-  border-bottom: 1px solid var(--line);
-  padding: 12px 16px;
-}
-.window-dot {
-  display: inline-block;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-}
-.window-dot.red { background: #ff6b7d; }
-.window-dot.yellow { background: #ffc857; }
-.window-dot.green { background: #67e6a2; }
-.panel-filename {
-  margin-left: auto;
-  color: var(--muted);
-  font-family: "DM Mono", monospace;
-  font-size: 11px;
-}
-.code-lines {
-  padding: 18px 18px 20px;
-  font-family: "DM Mono", monospace;
-  font-size: 12px;
-  color: #e8ebf5;
-}
-.code-lines p {
-  margin: 0 0 6px;
-}
-.line-no { color: var(--muted-2); margin-right: 10px; }
-.code-key { color: #8ad9ff; }
-.code-punc { color: var(--muted-2); }
-.code-string { color: #ffd888; }
-.code-comment { color: var(--accent-2); }
-.indent { padding-left: 26px; }
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0,1fr));
-  gap: 16px;
-}
-.skill-card {
-  background: rgba(20,24,35,.72);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 22px 20px;
-  transition: transform .2s ease, border-color .2s ease;
-}
-.skill-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(155,140,255,.28);
-}
-.skill-icon {
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  font-weight: 800;
-  margin-bottom: 18px;
-  background: rgba(255,255,255,.04);
-}
-.skill-icon.orange { color: #ffb86c; }
-.skill-icon.purple { color: #b7a7ff; }
-.skill-icon.green { color: #7ae6c3; }
-.skill-icon.blue { color: #8ad9ff; }
-.skill-card h3 {
-  margin: 0 0 8px;
-  font-size: 1.15rem;
-  letter-spacing: -.04em;
-}
-.skill-card p {
-  margin: 0 0 18px;
-  color: var(--muted);
-  min-height: 72px;
-}
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.skill-tags span {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid var(--line);
-  color: var(--muted);
-  font-size: .76rem;
-}
-
-.projects-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 16px;
-}
-.project-count {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 14px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--muted-2);
-  font-family: "DM Mono", monospace;
-  font-size: 10px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
-}
-.project-card {
-  background: rgba(20,24,35,.72);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  box-shadow: 0 20px 40px rgba(0,0,0,.12);
-}
-.project-art {
-  position: relative;
-  min-height: 220px;
-  padding: 14px;
-  display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-  border-bottom: 1px solid var(--line);
-}
-.art-label {
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 12px;
-  font-family: "DM Mono", monospace;
-  font-size: 9px;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.75);
-}
-.meditrack-art { background: linear-gradient(135deg, rgba(86,114,255,.22), rgba(16,18,29,.18)); }
-.clinic-art { background: linear-gradient(135deg, rgba(122,230,195,.18), rgba(13,16,22,.18)); }
-.wellness-art { background: linear-gradient(135deg, rgba(255,184,108,.18), rgba(13,16,22,.18)); }
-.property-art { background: linear-gradient(135deg, rgba(126,172,255,.16), rgba(13,16,22,.18)); }
-.restaurant-art { background: linear-gradient(135deg, rgba(255,107,125,.18), rgba(13,16,22,.18)); }
-.agency-art { background: linear-gradient(135deg, rgba(180,140,255,.18), rgba(13,16,22,.18)); }
-.construction-art { background: linear-gradient(135deg, rgba(88,204,180,.18), rgba(13,16,22,.18)); }
-.salon-art { background: linear-gradient(135deg, rgba(255,163,197,.18), rgba(13,16,22,.18)); }
-.travel-art { background: linear-gradient(135deg, rgba(130,210,255,.18), rgba(13,16,22,.18)); }
-.commerce-art { background: linear-gradient(135deg, rgba(255,206,119,.18), rgba(13,16,22,.18)); }
-
-.mockup {
-  position: relative;
-  width: 100%;
-  background: rgba(11,15,21,.8);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 20px 44px rgba(0,0,0,.14);
-}
-.mockup-bar {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  padding: 10px 12px;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  background: rgba(255,255,255,.02);
-}
-.mockup-bar span {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-  background: rgba(255,255,255,.28);
-}
-.mockup-bar span:nth-child(1) { background: #ff6b7d; }
-.mockup-bar span:nth-child(2) { background: #ffc857; }
-.mockup-bar span:nth-child(3) { background: #67e6a2; }
-
-.meditrack-preview {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 12px;
-  gap: 12px;
-}
-.meditrack-preview-head {
-  display: grid;
-  grid-template-columns: 36px 1fr auto;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 8px;
-}
-.meditrack-mark {
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #0d1118;
-  font-weight: 800;
-}
-.meditrack-preview-head b,
-.mockup-header b,
-.restaurant-header b,
-.travel-header b,
-.commerce-header b,
-.agency-header b,
-.construction-header b,
-.salon-header b {
-  display: block;
-  font-size: .9rem;
-}
-.meditrack-preview-head small,
-.mockup-header span,
-.restaurant-header span,
-.travel-header span,
-.commerce-header span,
-.agency-header span,
-.construction-header span,
-.salon-header span {
-  font-size: .68rem;
-  color: var(--muted);
-}
-.source-label {
-  padding: 5px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.08);
-  font-family: "DM Mono", monospace;
-  font-size: 8px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--muted-2);
-}
-.meditrack-feature-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 8px;
-}
-.meditrack-feature {
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.04);
-  border-radius: 12px;
-  padding: 10px 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.feature-symbol { color: var(--accent-2); font-size: .9rem; }
-.meditrack-feature b { font-size: .7rem; }
-.meditrack-feature small { color: var(--muted); font-size: .54rem; }
-.meditrack-database {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
-  padding-top: 6px;
-  border-top: 1px solid rgba(255,255,255,.06);
-}
-.meditrack-database span {
-  width: 100%;
-  color: var(--muted-2);
-  font-family: "DM Mono", monospace;
-  font-size: 8px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
-.meditrack-database b {
-  display: inline-flex;
-  align-items: center;
-  padding: 5px 8px;
-  border-radius: 999px;
-  background: rgba(155,140,255,.12);
-  border: 1px solid rgba(155,140,255,.18);
-  color: var(--text);
-  font-size: .56rem;
-}
-
-.mockup-clinic, .mockup-wellness, .mockup-property, .mockup-restaurant, .mockup-agency, .mockup-construction, .mockup-salon, .mockup-travel, .mockup-commerce {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.mockup-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 14px 10px;
-}
-.mockup-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 10px;
-  padding: 4px 14px 14px;
-}
-.clinic-tile {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.06);
-  border-radius: 14px;
-  min-height: 58px;
-  display: grid;
-  place-items: center;
-  color: var(--muted);
-  font-size: .8rem;
-}
-.clinic-tile.large {
-  grid-column: span 2;
-  min-height: 82px;
-  background: linear-gradient(135deg, rgba(122,230,195,.14), rgba(255,255,255,.03));
-  color: var(--text);
-}
-.clinic-tile.action {
-  background: linear-gradient(135deg, rgba(155,140,255,.18), rgba(255,255,255,.04));
-  color: var(--text);
-}
-
-.wellness-banner {
-  padding: 16px 14px 10px;
-  background: linear-gradient(135deg, rgba(255,184,108,.16), rgba(255,255,255,.02));
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.wellness-banner span {
-  display: block;
-  color: var(--muted);
-  font-size: .7rem;
-  text-transform: uppercase;
-  letter-spacing: .12em;
-}
-.wellness-banner strong {
-  display: block;
-  margin-top: 8px;
-  font-size: 1.2rem;
-  letter-spacing: -.05em;
-}
-.wellness-body {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 10px;
-  padding: 14px;
-}
-.wellness-card {
-  min-height: 90px;
-  border-radius: 14px;
-  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-  border: 1px solid rgba(255,255,255,.06);
-}
-.wellness-card.slim {
-  min-height: 120px;
-}
-
-.property-hero {
-  display: grid;
-  grid-template-columns: 1.4fr .8fr;
-  gap: 10px;
-  padding: 14px;
-}
-.property-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.05);
-  border-radius: 14px;
-  min-height: 120px;
-  padding: 12px;
-}
-.property-text span {
-  color: var(--muted);
-  font-size: .7rem;
-  text-transform: uppercase;
-  letter-spacing: .12em;
-}
-.property-text strong {
-  display: block;
-  margin-top: 8px;
-  font-size: 1.2rem;
-  line-height: 1.1;
-  letter-spacing: -.04em;
-}
-.property-box {
-  min-height: 120px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(126,172,255,.16), rgba(255,255,255,.04));
-  border: 1px solid rgba(255,255,255,.05);
-}
-.property-row {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 10px;
-  padding: 0 14px 14px;
-}
-.property-mini {
-  min-height: 80px;
-  border-radius: 12px;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.05);
-}
-
-.restaurant-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 14px 14px 10px;
-}
-.restaurant-menu {
-  display: grid;
-  gap: 10px;
-  padding: 0 14px 14px;
-}
-.menu-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.05);
-  border-radius: 12px;
-  padding: 10px 12px;
-  color: var(--muted);
-  font-size: .8rem;
-}
-.menu-row b { color: var(--text); }
-
-.agency-hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 14px;
-}
-.agency-hero strong {
-  display: block;
-  font-size: 1.2rem;
-  letter-spacing: -.04em;
-}
-.agency-pill {
-  min-width: 84px;
-  text-align: center;
-  padding: 8px 10px;
-  border-radius: 999px;
-  background: rgba(180,140,255,.14);
-  border: 1px solid rgba(180,140,255,.24);
-  color: var(--text);
-  font-size: .72rem;
-}
-.agency-row {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 10px;
-  padding: 0 14px 14px;
-}
-.agency-tile {
-  min-height: 80px;
-  border-radius: 12px;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.05);
-}
-
-.construction-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 14px 14px 10px;
-}
-.construction-grid {
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 10px;
-  padding: 0 14px 14px;
-}
-.construction-main,
-.construction-side {
-  border-radius: 12px;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.05);
-  min-height: 120px;
-}
-
-.salon-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 14px 14px 10px;
-}
-.salon-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 10px;
-  padding: 0 14px 14px;
-}
-.salon-card {
-  min-height: 68px;
-  border-radius: 12px;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.05);
-}
-.salon-card.tall { min-height: 110px; }
-
-.travel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 14px 14px 10px;
-}
-.travel-map {
-  height: 128px;
-  margin: 0 14px 14px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(130,210,255,.18), rgba(255,255,255,.04));
-  border: 1px solid rgba(255,255,255,.05);
-  position: relative;
-  overflow: hidden;
-}
-.travel-map::before,
-.travel-map::after {
-  content: "";
-  position: absolute;
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 50%;
-}
-.travel-map::before {
-  width: 160px;
-  height: 80px;
-  left: 20px;
-  top: 20px;
-}
-.travel-map::after {
-  width: 120px;
-  height: 90px;
-  right: 18px;
-  bottom: 10px;
-}
-
-.commerce-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 14px 14px 10px;
-}
-.commerce-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 10px;
-  padding: 0 14px 14px;
-}
-.commerce-item {
-  min-height: 88px;
-  border-radius: 12px;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.05);
-}
-.commerce-item.featured {
-  min-height: 110px;
-  grid-column: span 2;
-  background: linear-gradient(135deg, rgba(255,206,119,.16), rgba(255,255,255,.03));
-}
-
-.project-body {
-  padding: 18px 18px 20px;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-}
-.project-topline {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 12px;
-}
-.project-type {
-  color: var(--muted-2);
-  font-family: "DM Mono", monospace;
-  font-size: 9px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
-.project-index {
-  color: var(--accent-2);
-  font-family: "DM Mono", monospace;
-  font-size: 12px;
-  font-weight: 600;
-}
-.project-card h3 {
-  margin: 0 0 10px;
-  font-size: 1.34rem;
-  letter-spacing: -.05em;
-}
-.project-card p {
-  margin: 0 0 16px;
-  color: var(--muted);
-}
-.project-details {
-  margin-top: auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 14px;
-  border-radius: 999px;
-  background: transparent;
-  border: 1px solid var(--line);
-  color: var(--text);
-  font-weight: 700;
-}
-.project-disclaimer {
-  margin-top: 22px;
-  color: var(--muted);
-  font-size: .97rem;
-}
-.project-disclaimer span {
-  color: var(--accent-2);
-  margin-right: 8px;
-}
-
-.certification-layout {
-  display: grid;
-  grid-template-columns: .8fr 1.2fr;
-  gap: 70px;
-  align-items: center;
-}
-.cert-card {
-  position: relative;
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  padding: 28px 32px;
-  border: 1px solid rgba(155,140,255,.22);
-  border-radius: 24px;
-  background: linear-gradient(135deg, rgba(155,140,255,.09), rgba(20,24,35,.8));
-  overflow: hidden;
-}
-.cert-emblem {
-  width: 52px;
-  height: 52px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #0b0d12;
-  border-radius: 15px;
-  font-size: 1.4rem;
-  font-weight: 900;
-}
-.cert-content { flex: 1; }
-.cert-label {
-  display: inline-block;
-  font-family: "DM Mono", monospace;
-  font-size: 9px;
-  letter-spacing: .14em;
-  color: var(--muted-2);
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.cert-card h3 {
-  margin: 0 0 10px;
-  font-size: clamp(1.4rem, 2vw, 2.1rem);
-  letter-spacing: -.05em;
-}
-.cert-card p {
-  margin: 0;
-  color: var(--muted);
-}
-.cert-watermark {
-  position: absolute;
-  right: -18px;
-  bottom: -20px;
-  font-size: clamp(4rem, 8vw, 7rem);
-  font-weight: 800;
-  color: rgba(255,255,255,.04);
-  letter-spacing: -.08em;
-}
-
-.contact-section { padding-top: 100px; padding-bottom: 100px; }
-.contact-card {
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  padding: 72px 26px;
-  border-radius: 30px;
-  border: 1px solid rgba(155,140,255,.2);
-  background: linear-gradient(135deg, rgba(155,140,255,.08), rgba(13,15,22,.8));
-}
-.contact-orb {
-  position: absolute;
-  inset: 50% auto auto 50%;
-  transform: translate(-50%, -50%);
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle, rgba(155,140,255,.20), transparent 60%);
-  filter: blur(10px);
-}
-.contact-card > * { position: relative; z-index: 1; }
-.contact-card h2 {
-  margin: 0;
-  font-size: clamp(2.3rem, 5vw, 4rem);
-  line-height: 1.05;
-  letter-spacing: -.06em;
-}
-.contact-description {
-  max-width: 620px;
-  margin: 18px auto 0;
-  color: var(--muted);
-}
-.contact-card .button {
-  margin-top: 28px;
-}
-.contact-details {
-  margin-top: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-.contact-email {
-  display: inline-flex;
-  align-items: center;
-  padding: 10px 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid var(--line);
-  color: var(--muted);
-}
-.copy-email {
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: transparent;
-  border: 1px solid var(--line);
-  color: var(--text);
-}
-.copy-status {
-  min-height: 24px;
-  margin-top: 12px;
-  color: var(--accent-2);
-}
-
-.footer {
-  border-top: 1px solid var(--line);
-  padding: 25px 0 18px;
-}
-.footer-inner,
-.footer-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-.footer-inner p,
-.footer-bottom {
-  color: var(--muted);
-  font-size: .92rem;
-}
-.footer-bottom {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid var(--line);
-}
-
-.project-dialog {
-  width: min(720px, calc(100% - 30px));
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  background: #121923;
-  color: var(--text);
-  box-shadow: var(--shadow);
-  padding: 0;
-}
-.project-dialog::backdrop {
-  background: rgba(5,8,12,.72);
-}
-.dialog-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 18px 20px 10px;
-  border-bottom: 1px solid var(--line);
-}
-.dialog-close {
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--text);
-  border-radius: 10px;
-  width: 38px;
-  height: 38px;
-  font-size: 1.4rem;
-}
-.project-dialog h2 {
-  margin: 16px 20px 12px;
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  letter-spacing: -.05em;
-}
-#dialogContent {
-  padding: 0 20px 8px;
-  color: var(--muted);
-}
-#dialogContent p,
-#dialogContent li {
-  line-height: 1.8;
-}
-#dialogContent ul {
-  padding-left: 18px;
-  margin: 10px 0;
-}
-.dialog-done {
-  margin: 12px 20px 20px;
-}
-
-.toast {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  padding: 12px 16px;
-  background: rgba(11,13,18,.96);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  color: var(--text);
-  opacity: 0;
-  transform: translateY(12px);
-  pointer-events: none;
-  transition: opacity .2s ease, transform .2s ease;
-  z-index: 200;
-}
-.toast.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (max-width: 980px) {
-  .hero { grid-template-columns: 1fr; gap: 20px; }
-  .services-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .skills-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .projects-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .certification-layout, .about-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 700px) {
-  .container { width: min(100% - 34px, var(--container)); }
-  .menu-toggle { display: block; }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 66px;
-    left: 17px;
-    right: 17px;
-    background: rgba(11,13,18,.96);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 18px;
-    flex-direction: column;
-    align-items: flex-start;
-    box-shadow: var(--shadow);
-  }
-  .nav-links.open { display: flex; }
-  .quick-stats { grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .services-grid,
-  .projects-grid,
-  .skills-grid { grid-template-columns: 1fr; }
-  .hero-actions { flex-direction: column; align-items: stretch; }
-  .hero-actions .button { width: 100%; }
-  .footer-inner, .footer-bottom { flex-direction: column; align-items: flex-start; }
-}
-
-@media (max-width: 420px) {
-  .hero-meta { flex-direction: column; align-items: flex-start; }
-  .project-count { letter-spacing: .08em; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-a { color: inherit; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio of Dan Adriane Ravancho, IT student and web developer creating modern client-ready websites and digital experiences."
+    />
+    <meta name="theme-color" content="#0b0d12" />
+    <title>Dan Adriane Ravancho | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav container" aria-label="Main navigation">
+        <a class="brand" href="#home" aria-label="Dan Adriane Ravancho home">
+          <span class="brand-mark">DR</span><span>dan<span class="accent">.</span></span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#credentials">Credentials</a>
+          <a href="#contact" class="nav-cta">Contact me <span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero section container" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot"></span> OPEN FOR CLIENT WORK</p>
+          <h1>
+            Hi, I’m <span class="gradient-text">Dan Adriane<br class="desktop-break" /> Ravancho.</span>
+          </h1>
+          <p class="hero-subtitle">BSIT Student <span>/</span> Web Developer <span>/</span> Security-minded Builder</p>
+          <p class="hero-description">
+            I design and build polished digital experiences for businesses, startups, and personal brands.
+            My focus is creating modern, responsive websites that look professional, communicate clearly,
+            and help clients stand out online.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Explore my work <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <div class="hero-meta">
+            <span><span class="meta-icon">⌁</span> Pangasinan, Philippines</span>
+            <span><span class="meta-icon">⌘</span> BS Information Technology</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Portfolio highlight panel">
+          <div class="glass-card profile-card">
+            <div class="mini-label">Featured work</div>
+            <h2>MediTrack</h2>
+            <p>Healthcare booking and appointment website concept built for clarity, trust, and fast patient access.</p>
+            <ul>
+              <li>Responsive dashboard</li>
+              <li>Patient booking flow</li>
+              <li>Modern healthcare UX</li>
+            </ul>
+          </div>
+          <div class="orb orb-one"></div>
+          <div class="orb orb-two"></div>
+        </div>
+      </section>
+
+      <section class="trust-bar container" aria-label="Quick stats">
+        <div class="stat-item">
+          <strong>3+</strong>
+          <span>Web projects</span>
+        </div>
+        <div class="stat-item">
+          <strong>100%</strong>
+          <span>Responsive</span>
+        </div>
+        <div class="stat-item">
+          <strong>Client-ready</strong>
+          <span>Design & build</span>
+        </div>
+        <div class="stat-item">
+          <strong>Focused</strong>
+          <span>UI + usability</span>
+        </div>
+      </section>
+
+      <section class="section container" id="about">
+        <div class="section-heading">
+          <p class="eyebrow small"><span class="status-dot"></span> ABOUT ME</p>
+          <h2>I create meaningful websites that feel premium and functional.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              I’m a student developer passionate about web design, digital experiences, and practical problem solving.
+              I enjoy turning ideas into user-friendly websites that feel modern, memorable, and easy to navigate.
+            </p>
+            <p>
+              My work combines design thinking, clean front-end structure, and a strong focus on readability,
+              accessibility, and conversion. I’m learning continuously while building projects that can genuinely be used by clients and businesses.
+            </p>
+          </div>
+          <div class="about-panel">
+            <div class="panel-row">
+              <span>Specialty</span>
+              <strong>Web Design</strong>
+            </div>
+            <div class="panel-row">
+              <span>Approach</span>
+              <strong>User-focused</strong>
+            </div>
+            <div class="panel-row">
+              <span>Strength</span>
+              <strong>Responsive builds</strong>
+            </div>
+            <div class="panel-row">
+              <span>Goal</span>
+              <strong>Client impact</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" id="services">
+        <div class="section-heading">
+          <p class="eyebrow small"><span class="status-dot"></span> SERVICES</p>
+          <h2>What I can help you build.</h2>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <span class="service-icon">01</span>
+            <h3>Business Websites</h3>
+            <p>Clean, trustworthy websites for businesses that want to showcase services and attract clients.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-icon">02</span>
+            <h3>Landing Pages</h3>
+            <p>Focused pages built to highlight offers, promotions, or products with clear calls to action.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-icon">03</span>
+            <h3>Portfolio Websites</h3>
+            <p>Personal brands and creative portfolios designed to look premium and memorable to visitors.</p>
+          </article>
+
+          <article class="service-card">
+            <span class="service-icon">04</span>
+            <h3>UI/UX Improvements</h3>
+            <p>Refining layouts, interactions, and structure to improve clarity, comfort, and user experience.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container" id="skills">
+        <div class="section-heading">
+          <p class="eyebrow small"><span class="status-dot"></span> SKILLS</p>
+          <h2>Tools and skills I use to build digital work.</h2>
+        </div>
+
+        <div class="skills-wrap">
+          <span>HTML5</span>
+          <span>CSS3</span>
+          <span>JavaScript</span>
+          <span>Responsive Design</span>
+          <span>UI/UX</span>
+          <span>Wireframing</span>
+          <span>GitHub</span>
+          <span>Cybersecurity</span>
+          <span>Linux</span>
+          <span>Networking</span>
+          <span>Problem Solving</span>
+          <span>Project Thinking</span>
+        </div>
+      </section>
+
+      <section class="section container" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow small"><span class="status-dot"></span> PROJECTS</p>
+          <h2>Selected work and website concepts.</h2>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card featured">
+            <div class="project-topline">
+              <span class="tag tag-primary">Featured</span>
+              <span class="tag">Healthcare</span>
+            </div>
+            <h3>MediTrack</h3>
+            <p>
+              A healthcare appointment and scheduling website concept focused on patient trust, clear navigation,
+              and a smooth booking workflow for clinics and medical services.
+            </p>
+            <ul>
+              <li>Responsive healthcare landing page</li>
+              <li>Service category layout</li>
+              <li>Appointment/booking call-to-action flow</li>
+            </ul>
+            <a href="#contact" class="inline-link">Discuss a similar project →</a>
+          </article>
+
+          <article class="project-card">
+            <div class="project-topline">
+              <span class="tag">Business</span>
+            </div>
+            <h3>Professional Service Website</h3>
+            <p>
+              A polished business website concept for showcasing services, contact details, and credibility to potential clients.
+            </p>
+            <ul>
+              <li>Service showcase</li>
+              <li>Modern hero section</li>
+              <li>Lead generation layout</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-topline">
+              <span class="tag">Portfolio</span>
+            </div>
+            <h3>Personal Brand Portfolio</h3>
+            <p>
+              A sleek profile website built to present skills, projects, and achievements in a clear and professional way.
+            </p>
+            <ul>
+              <li>Portfolio presentation</li>
+              <li>Project section highlights</li>
+              <li>Professional identity</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <div class="project-topline">
+              <span class="tag">Startup</span>
+            </div>
+            <h3>Landing Page Concept</h3>
+            <p>
+              A conversion-focused layout built to help a product or service stand out with clean messaging and strong visual hierarchy.
+            </p>
+            <ul>
+              <li>CTA-first structure</li>
+              <li>Feature highlight blocks</li>
+              <li>Mobile-friendly flow</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section container" id="credentials">
+        <div class="section-heading">
+          <p class="eyebrow small"><span class="status-dot"></span> CREDENTIALS</p>
+          <h2>Learning, growth, and readiness.</h2>
+        </div>
+
+        <div class="credentials-grid">
+          <div class="credential-card">
+            <span class="credential-label">Education</span>
+            <h3>BS Information Technology</h3>
+            <p>Building foundation in technology, systems, and digital problem solving.</p>
+          </div>
+
+          <div class="credential-card">
+            <span class="credential-label">Focus</span>
+            <h3>Cybersecurity + Web Development</h3>
+            <p>Strong interest in secure, stable, and user-friendly digital systems.</p>
+          </div>
+
+          <div class="credential-card">
+            <span class="credential-label">Goal</span>
+            <h3>Client-ready digital work</h3>
+            <p>Creating modern websites and online experiences that help people and businesses grow.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" id="contact">
+        <div class="contact-panel">
+          <div>
+            <p class="eyebrow small"><span class="status-dot"></span> CONTACT</p>
+            <h2>Let’s build something meaningful for your brand.</h2>
+          </div>
+
+          <div class="contact-actions">
+            <a class="button button-primary" href="mailto:adrianeravancho02@gmail.com">Email me</a>
+            <button class="button button-secondary" id="copyEmail" type="button">Copy email</button>
+          </div>
+
+          <div class="contact-meta">
+            <span id="copyStatus">adrianeravancho02@gmail.com</span>
+            <span>Available for projects and collaborations</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Dan Adriane Ravancho</p>
+        <p>Designed with purpose, built for impact.</p>
+      </div>
+    </footer>
+  </body>
+</html>
