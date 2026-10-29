@@ -564,6 +564,17 @@ select {
   line-height: 1.9;
 }
 
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.project-actions .button {
+  min-width: 150px;
+}
+
 .inline-link {
   display: inline-flex;
   align-items: center;
@@ -719,7 +730,8 @@ select {
   }
 
   .hero-actions,
-  .contact-actions {
+  .contact-actions,
+  .project-actions {
     flex-direction: column;
     align-items: stretch;
   }
