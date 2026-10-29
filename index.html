@@ -216,7 +216,7 @@
             </ul>
             <div class="project-actions">
               <a class="button button-primary" href="mockups/clinic/index.html" target="_blank" rel="noreferrer">Open</a>
-              <button class="button button-secondary" type="button" data-project="clinic">Project notes</button>
+              <button class="button button-secondary" type="button" data-project="meditrack">Project notes</button>
             </div>
           </article>
 
@@ -332,5 +332,16 @@
         <p>Designed with purpose, built for impact.</p>
       </div>
     </footer>
+
+    <dialog class="project-dialog" id="projectDialog" aria-labelledby="dialogTitle">
+      <div class="dialog-header">
+        <span class="eyebrow">PROJECT NOTES</span>
+        <button type="button" class="dialog-close" id="dialogClose" aria-label="Close project notes">×</button>
+      </div>
+      <h2 id="dialogTitle">Project notes</h2>
+      <div id="dialogContent"></div>
+      <button class="button button-secondary dialog-done" type="button" id="dialogDone">Close</button>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </body>
 </html>
