@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Veloura Studio | Luxury Salon</title>
+    <meta
+      name="description"
+      content="Veloura Studio is a premium salon mockup offering hair styling, nail artistry, color treatments, and luxury beauty appointments."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              blush: {
+                50: '#fff7f8',
+                100: '#fef1f3',
+                200: '#fbe3eb',
+                300: '#f8d5e2',
+                400: '#f4c0d5',
+                500: '#e8a9bb',
+                600: '#d98ca8',
+                700: '#bb6d8b',
+                800: '#954f6d',
+                900: '#6f3b50'
+              },
+              sand: {
+                50: '#fffdfb',
+                100: '#f8f3ee',
+                200: '#f0e6df',
+                300: '#e2d4c8',
+                400: '#d1baa6',
+                500: '#b4977f',
+                600: '#896a57',
+                700: '#684e3c',
+                800: '#4b382d',
+                900: '#2d201d'
+              }
+            },
+            fontFamily: {
+              display: ['"Playfair Display"', 'serif'],
+              sans: ['"Manrope"', 'sans-serif']
+            },
+            boxShadow: {
+              glow: '0 24px 60px rgba(196, 118, 148, 0.18)',
+              soft: '0 18px 40px rgba(40, 22, 25, 0.08)'
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Manrope', sans-serif; }
+      .section-title { font-family: 'Playfair Display', serif; }
+      .glass-panel { backdrop-filter: blur(16px); }
+      @keyframes float-card {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      .floating-card { animation: float-card 6s ease-in-out infinite; }
+      .fade-up { animation: fadeUp 0.7s ease-out both; }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .service-image { transition: transform 0.35s ease, filter 0.35s ease; }
+      .service-card:hover .service-image { transform: scale(1.06); filter: saturate(1.1); }
+      .gallery-item img { transition: transform 0.35s ease, filter 0.35s ease; }
+      .gallery-item:hover img { transform: scale(1.05); filter: brightness(1.05); }
+      .chat-scroll::-webkit-scrollbar { width: 6px; }
+      .chat-scroll::-webkit-scrollbar-thumb { background: rgba(187, 109, 139, 0.4); border-radius: 999px; }
+    </style>
+  </head>
+  <body class="bg-[#fffaf8] text-sand-900 antialiased">
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      const services = [
+        {
+          title: 'Haircuts & Styling',
+          description: 'Custom cuts, blowouts, and finishing styles tailored to your face shape and lifestyle.',
+          price: '$45',
+          image: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          title: 'Hair Colour & Treat.',
+          description: 'Dimensional colour, glossing, and repair rituals that revive shine and softness.',
+          price: '$80',
+          image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          title: 'Manicure & Pedicure',
+          description: 'Spa-inspired nail care with polish, shaping, hydration, and a polished finish.',
+          price: '$35',
+          image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          title: 'Nail Art & Extensions',
+          description: 'Statement looks, delicate details, and long-lasting extensions for every occasion.',
+          price: '$60',
+          image: 'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=900&q=80'
+        }
+      ];
+
+      const gallery = [
+        'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=900&q=80',
+        'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80'
+      ];
+
+      const testimonials = [
+        {
+          name: 'Sophia M.',
+          rating: 5,
+          review: 'The team made me feel completely cared for. My balayage and styling were stunning and lasted for weeks.'
+        },
+        {
+          name: 'Alicia R.',
+          rating: 5,
+          review: 'Beautiful salon, thoughtful staff, and a luxury experience without feeling overwhelming. Highly recommend.'
+        },
+        {
+          name: 'Nina T.',
+          rating: 5,
+          review: 'The nail art was gorgeous and the service felt so personal. I booked again before leaving.'
+        }
+      ];
+
+      function App() {
+        const [chatOpen, setChatOpen] = React.useState(false);
+        const [chatInput, setChatInput] = React.useState('');
+        const [bookingSubmitted, setBookingSubmitted] = React.useState(false);
+        const [messages, setMessages] = React.useState([
+          { sender: 'bot', text: 'Hi! I can help with services, pricing, and appointment availability. What are you looking for?' }
+        ]);
+        const [booking, setBooking] = React.useState({
+          service: 'Haircuts & Styling',
+          date: '',
+          time: '10:00 AM',
+          name: '',
+          phone: '',
+          notes: ''
+        });
+
+        const handleQuickReply = (text) => {
+          setMessages((prev) => [...prev, { sender: 'user', text }, { sender: 'bot', text: text.includes('price') ? 'Haircuts start at $45 and deluxe colour services start from $80.' : text.includes('appointment') ? 'We have openings this week. Please choose a service and preferred time in the booking form below.' : 'Absolutely — we offer signature hair styling, colour, manicures, and nail art. You can book anytime through the form here.' }]);
+        };
+
+        const handleChatSubmit = (e) => {
+          e.preventDefault();
+          const trimmed = chatInput.trim();
+          if (!trimmed) return;
+          setMessages((prev) => [...prev, { sender: 'user', text: trimmed }]);
+          const lower = trimmed.toLowerCase();
+          let response = 'Thanks! Our stylists can help with that. You can choose a service and preferred appointment time in the booking form.';
+
+          if (lower.includes('price') || lower.includes('cost')) response = 'Our pricing starts at $35 for a manicure and $45 for a haircut. Colour and treatment appointments begin at $80.';
+          if (lower.includes('hair') || lower.includes('colour') || lower.includes('styling')) response = 'We offer precision cuts, blowouts, colour refreshes, and treatment rituals for healthy, glossy hair.';
+          if (lower.includes('nail') || lower.includes('mani') || lower.includes('pedi')) response = 'Our manicure and pedicure services include shaping, care, and polish finishing. Nail art starts at $60.';
+          if (lower.includes('book') || lower.includes('appointment') || lower.includes('available')) response = 'We typically have weekday and weekend openings. Choose your service and date in the booking form and we will confirm your slot.';
+
+          setMessages((prev) => [...prev, { sender: 'bot', text: response }]);
+          setChatInput('');
+        };
+
+        const handleBookingSubmit = (e) => {
+          e.preventDefault();
+          setBookingSubmitted(true);
+          setMessages((prev) => [
+            ...prev,
+            { sender: 'bot', text: `Thanks ${booking.name || 'friend'}! Your ${booking.service.toLowerCase()} booking for ${booking.date || 'your selected date'} at ${booking.time} has been requested. We’ll confirm by phone shortly.` }
+          ]);
+        };
+
+        return (
+          <div className="min-h-screen bg-[#fffaf8] text-sand-900">
+            <header className="sticky top-0 z-40 border-b border-[#f0dfe6] bg-[#fffaf8]/90 backdrop-blur-xl">
+              <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+                <a href="#home" className="flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f7e2ea] text-lg font-extrabold text-[#7d4258] shadow-soft">V</div>
+                  <div>
+                    <div className="font-display text-2xl font-bold tracking-tight">Veloura</div>
+                  </div>
+                </a>
+
+                <div className="hidden items-center gap-8 text-sm font-semibold text-sand-700 md:flex">
+                  <a href="#home" className="transition hover:text-[#7d4258]">Home</a>
+                  <a href="#services" className="transition hover:text-[#7d4258]">Services</a>
+                  <a href="#gallery" className="transition hover:text-[#7d4258]">Gallery</a>
+                  <a href="#about" className="transition hover:text-[#7d4258]">About</a>
+                  <a href="#contact" className="transition hover:text-[#7d4258]">Contact</a>
+                </div>
+
+                <a href="#booking" className="rounded-full bg-[#1b1116] px-5 py-3 text-sm font-bold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-[#2e1a20]">
+                  Book an Appointment
+                </a>
+              </nav>
+            </header>
+
+            <main>
+              <section id="home" className="mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:pt-16">
+                <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+                  <div className="fade-up">
+                    <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#f1d8e2] bg-[#fff4f7] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#8f5871]">
+                      <span className="h-2 w-2 rounded-full bg-[#d98ca8]" />
+                      Premium Beauty Studio
+                    </div>
+                    <h1 className="font-display text-5xl leading-none tracking-[-0.06em] text-[#23171a] sm:text-6xl xl:text-[5rem]">
+                      Your Beauty,<br />Your Moment.
+                    </h1>
+                    <p className="mt-6 max-w-xl text-base leading-8 text-sand-700 sm:text-lg">
+                      Tailored salon experiences for modern beauty rituals, from polished cuts and radiant colour to luxurious nail care and signature finishing touches.
+                    </p>
+                    <div className="mt-8 flex flex-wrap gap-4">
+                      <a href="#booking" className="rounded-full bg-[#d98ca8] px-6 py-3.5 text-sm font-bold text-white shadow-glow transition hover:-translate-y-0.5 hover:bg-[#c97f9d]">
+                        Book Now
+                      </a>
+                      <a href="#services" className="rounded-full border border-[#edd8df] bg-white px-6 py-3.5 text-sm font-bold text-[#3b2b2f] transition hover:-translate-y-0.5 hover:border-[#d9a7bb] hover:text-[#7d4258]">
+                        Explore Services
+                      </a>
+                    </div>
+                    <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-sand-600">
+                      <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-[#6fc7a9]" /> Trusted by 2,400+ clients</span>
+                      <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-[#d9a7bb]" /> 4.9 average rating</span>
+                    </div>
+                  </div>
+
+                  <div className="relative">
+                    <div className="absolute -left-10 top-10 h-28 w-28 rounded-full bg-[#f5dfe9] blur-3xl" />
+                    <div className="absolute -right-8 bottom-10 h-32 w-32 rounded-full bg-[#f3e6d7] blur-3xl" />
+                    <div className="overflow-hidden rounded-[2rem] border border-[#f0dfe6] bg-white shadow-glow">
+                      <img
+                        src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=80"
+                        alt="Salon customer during a styling session"
+                        className="h-[580px] w-full object-cover"
+                      />
+                    </div>
+                    <div className="floating-card absolute -bottom-7 left-6 w-[270px] rounded-2xl border border-[#f1dfe7] bg-white/90 p-4 shadow-soft backdrop-blur-xl">
+                      <div className="mb-2 flex items-center justify-between text-xs uppercase tracking-[0.18em] text-sand-500">
+                        <span>Featured</span>
+                        <span>Today</span>
+                      </div>
+                      <p className="font-display text-2xl font-semibold text-[#2b1d22]">Signature Glow</p>
+                      <div className="mt-2 flex items-center justify-between text-sm text-sand-600">
+                        <span>Hair + treatment</span>
+                        <span className="font-bold text-[#7d4258]">$110</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-2 gap-4 rounded-[2rem] border border-[#f2dfe8] bg-[#fff5f8] p-4 shadow-soft md:grid-cols-4 md:p-6">
+                  {[
+                    ['1.2k+', 'Happy clients'],
+                    ['9 yrs', 'Salon experience'],
+                    ['4.9/5', 'Average rating'],
+                    ['Weekly', 'Beauty events']
+                  ].map(([value, label]) => (
+                    <div key={label} className="rounded-2xl bg-white/80 p-4 text-center shadow-sm">
+                      <div className="font-display text-3xl font-bold text-[#2d1a1f]">{value}</div>
+                      <div className="mt-1 text-xs uppercase tracking-[0.18em] text-sand-500">{label}</div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section id="services" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+                <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#9f6a82]">Services</p>
+                    <h2 className="section-title mt-3 text-4xl text-[#241a1e] sm:text-5xl">Beauty rituals designed around you.</h2>
+                  </div>
+                  <a href="#booking" className="rounded-full border border-[#efd3df] bg-white px-5 py-3 text-sm font-bold text-[#462d35] transition hover:border-[#d9a7bb] hover:text-[#7d4258]">
+                    Book a Session
+                  </a>
+                </div>
+
+                <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                  {services.map((service, index) => (
+                    <article key={service.title} className="service-card overflow-hidden rounded-[1.8rem] border border-[#f3dde7] bg-white shadow-soft">
+                      <div className="overflow-hidden">
+                        <img src={service.image} alt={service.title} className="service-image h-64 w-full object-cover" />
+                      </div>
+                      <div className="p-6">
+                        <div className="mb-3 flex items-center justify-between">
+                          <span className="rounded-full bg-[#fff1f5] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#8d5d72]">0{index + 1}</span>
+                          <span className="text-lg font-extrabold text-[#7d4258]">{service.price}</span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-[#2b1d22]">{service.title}</h3>
+                        <p className="mt-3 text-sm leading-7 text-sand-600">{service.description}</p>
+                        <button type="button" onClick={() => setChatOpen(true)} className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#f7e2ea] px-4 py-2 text-sm font-semibold text-[#6b3244] transition hover:bg-[#f0d4df]">
+                          Reserve this service
+                        </button>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </section>
+
+              <section id="gallery" className="bg-[#fff6f9] py-20">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                  <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#9f6a82]">Gallery</p>
+                      <h2 className="section-title mt-3 text-4xl text-[#241a1e] sm:text-5xl">Signature looks worth showing off.</h2>
+                    </div>
+                    <p className="max-w-xl text-sm leading-7 text-sand-600 md:text-right">
+                      Thoughtful finishes, polished details, and elevated beauty moments designed to feel personal and luxurious.
+                    </p>
+                  </div>
+
+                  <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    {gallery.map((image, index) => (
+                      <div key={image} className="gallery-item group relative overflow-hidden rounded-[1.8rem] border border-[#f2dfe8] bg-white shadow-soft">
+                        <img
+                          src={image}
+                          alt={`Salon beauty gallery item ${index + 1}`}
+                          className="h-80 w-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#26191d]/70 via-transparent to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+                        <div className="absolute bottom-0 left-0 right-0 translate-y-4 p-5 text-white opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                          <p className="text-xs uppercase tracking-[0.18em] text-[#f7d8e6]">Studio look</p>
+                          <p className="mt-2 text-xl font-semibold">Gloss, glow, and polish</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              <section id="about" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+                <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+                  <div className="overflow-hidden rounded-[2rem] border border-[#f2dfe8] bg-white shadow-glow">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80" alt="Salon portrait" className="h-full w-full object-cover" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#9f6a82]">About us</p>
+                    <h2 className="section-title mt-3 text-4xl text-[#241a1e] sm:text-5xl">We believe beauty should feel effortless and personal.</h2>
+                    <p className="mt-5 text-base leading-8 text-sand-700">
+                      Veloura Studio blends artistry, care, and modern styling to create a relaxed salon experience that feels premium from start to finish. Our specialists focus on healthy hair, confident finishes, and beautiful details that fit naturally into your daily life.
+                    </p>
+                    <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                      <div className="rounded-2xl border border-[#f0dfe6] bg-[#fff5f8] p-4">
+                        <p className="text-3xl font-display font-bold text-[#2d1a1f]">94%</p>
+                        <p className="mt-2 text-sm text-sand-600">returning clients</p>
+                      </div>
+                      <div className="rounded-2xl border border-[#f0dfe6] bg-[#fff5f8] p-4">
+                        <p className="text-3xl font-display font-bold text-[#2d1a1f]">12+</p>
+                        <p className="mt-2 text-sm text-sand-600">signature treatments</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section className="bg-[#fff7f8] py-20">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                  <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#9f6a82]">Testimonials</p>
+                      <h2 className="section-title mt-3 text-4xl text-[#241a1e] sm:text-5xl">Loved by clients who want a polished look.</h2>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-6 lg:grid-cols-3">
+                    {testimonials.map((item) => (
+                      <article key={item.name} className="rounded-[1.8rem] border border-[#f2dfe8] bg-white p-6 shadow-soft">
+                        <div className="mb-4 flex gap-1 text-[#f5bb45]">
+                          {Array.from({ length: item.rating }).map((_, idx) => (
+                            <svg key={idx} aria-label="star" viewBox="0 0 20 20" fill="currentColor" className="h-5 w-5"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.035a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 0 0-1.176 0l-2.8 2.034c-.784.57-1.839-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.027 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 0 0 .95-.69l1.07-3.292Z" /></svg>
+                          ))}
+                        </div>
+                        <p className="text-base leading-8 text-sand-700">“{item.review}”</p>
+                        <div className="mt-6 border-t border-[#f1dee6] pt-4">
+                          <p className="font-semibold text-[#2c1d1f]">{item.name}</p>
+                          <p className="text-sm text-sand-500">Verified client</p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              <section id="booking" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+                <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+                  <div className="rounded-[2rem] border border-[#f0dfe6] bg-[#fef6f8] p-7 shadow-soft">
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#9f6a82]">AI booking assistant</p>
+                    <h3 className="section-title mt-3 text-4xl text-[#241a1e]">Plan your next visit.</h3>
+                    <p className="mt-4 text-sm leading-7 text-sand-600">
+                      Ask about services, pricing, or appointment availability. We’ll help you choose the perfect beauty moment for your schedule.
+                    </p>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {['Hair pricing', 'Nail services', 'Appointment slots'].map((option) => (
+                        <button key={option} type="button" onClick={() => handleQuickReply(option)} className="rounded-full border border-[#efd3df] bg-white px-3 py-2 text-xs font-semibold text-[#5c2d3c] transition hover:border-[#d9a7bb]">
+                          {option}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <form onSubmit={handleBookingSubmit} className="rounded-[2rem] border border-[#f0dfe6] bg-white p-6 shadow-glow sm:p-8">
+                    <div className="grid gap-5 sm:grid-cols-2">
+                      <label className="block">
+                        <span className="mb-2 block text-sm font-semibold text-sand-700">Full name</span>
+                        <input value={booking.name} onChange={(e) => setBooking({ ...booking, name: e.target.value })} className="w-full rounded-2xl border border-[#ecdfe6] bg-[#fffaf9] px-4 py-3 text-sm outline-none transition focus:border-[#d98ca8]" placeholder="Your name" required />
+                      </label>
+                      <label className="block">
+                        <span className="mb-2 block text-sm font-semibold text-sand-700">Phone</span>
+                        <input value={booking.phone} onChange={(e) => setBooking({ ...booking, phone: e.target.value })} className="w-full rounded-2xl border border-[#ecdfe6] bg-[#fffaf9] px-4 py-3 text-sm outline-none transition focus:border-[#d98ca8]" placeholder="(555) 123-4567" required />
+                      </label>
+                      <label className="block sm:col-span-2">
+                        <span className="mb-2 block text-sm font-semibold text-sand-700">Service</span>
+                        <select value={booking.service} onChange={(e) => setBooking({ ...booking, service: e.target.value })} className="w-full rounded-2xl border border-[#ecdfe6] bg-[#fffaf9] px-4 py-3 text-sm outline-none transition focus:border-[#d98ca8]">
+                          {services.map((service) => (
+                            <option key={service.title} value={service.title}>{service.title}</option>
+                          ))}
+                        </select>
+                      </label>
+                      <label className="block">
+                        <span className="mb-2 block text-sm font-semibold text-sand-700">Preferred date</span>
+                        <input type="date" value={booking.date} onChange={(e) => setBooking({ ...booking, date: e.target.value })} className="w-full rounded-2xl border border-[#ecdfe6] bg-[#fffaf9] px-4 py-3 text-sm outline-none transition focus:border-[#d98ca8]" required />
+                      </label>
+                      <label className="block">
+                        <span className="mb-2 block text-sm font-semibold text-sand-700">Preferred time</span>
+                        <select value={booking.time} onChange={(e) => setBooking({ ...booking, time: e.target.value })} className="w-full rounded-2xl border border-[#ecdfe6] bg-[#fffaf9] px-4 py-3 text-sm outline-none transition focus:border-[#d98ca8]">
+                          {['9:00 AM', '10:00 AM', '12:30 PM', '2:00 PM', '4:30 PM', '6:00 PM'].map((slot) => (
+                            <option key={slot}>{slot}</option>
+                          ))}
+                        </select>
+                      </label>
+                      <label className="block sm:col-span-2">
+                        <span className="mb-2 block text-sm font-semibold text-sand-700">Notes</span>
+                        <textarea value={booking.notes} onChange={(e) => setBooking({ ...booking, notes: e.target.value })} rows="4" className="w-full rounded-2xl border border-[#ecdfe6] bg-[#fffaf9] px-4 py-3 text-sm outline-none transition focus:border-[#d98ca8]" placeholder="Tell us about your desired look, special requests, or occasion." />
+                      </label>
+                    </div>
+
+                    <button type="submit" className="mt-6 inline-flex items-center justify-center rounded-full bg-[#1b1116] px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#2b1b21]">
+                      Confirm Booking
+                    </button>
+
+                    {bookingSubmitted && (
+                      <div className="mt-5 rounded-2xl border border-[#d9f0e8] bg-[#eefbf5] p-4 text-sm font-medium text-[#1d5d48]">
+                        Your booking request has been received. A stylist will confirm your appointment shortly.
+                      </div>
+                    )}
+                  </form>
+                </div>
+              </section>
+
+              <section id="contact" className="bg-[#1d171b] py-20 text-[#f9eef2]">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                  <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#e9bfd0]">Contact</p>
+                      <h2 className="section-title mt-3 text-4xl text-white sm:text-5xl">Visit the studio or send a note.</h2>
+                      <div className="mt-8 space-y-5 text-sm text-[#f0dfe5]">
+                        <p>128 Rosewood Avenue, Studio 4<br />Los Angeles, CA 90028</p>
+                        <p>Mon–Sat: 9:00 AM – 7:00 PM<br />Sun: 10:00 AM – 4:00 PM</p>
+                        <p>hello@velourastudio.com<br />(323) 555-0198</p>
+                        <div className="flex gap-4 text-lg">
+                          <a href="#" aria-label="Instagram" className="transition hover:text-[#f8c4d6]">◎</a>
+                          <a href="#" aria-label="Pinterest" className="transition hover:text-[#f8c4d6]">◌</a>
+                          <a href="#" aria-label="Facebook" className="transition hover:text-[#f8c4d6]">◍</a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid gap-6 xl:grid-cols-[1fr_0.9fr]">
+                      <form className="rounded-[2rem] border border-[#3b2a32] bg-[#251d22] p-6 shadow-soft">
+                        <div className="grid gap-5">
+                          <label className="block">
+                            <span className="mb-2 block text-sm font-semibold text-[#f5dfea]">Name</span>
+                            <input className="w-full rounded-2xl border border-[#48363d] bg-[#2c2329] px-4 py-3 text-sm text-white outline-none transition focus:border-[#e9bfd0]" placeholder="Your name" />
+                          </label>
+                          <label className="block">
+                            <span className="mb-2 block text-sm font-semibold text-[#f5dfea]">Email</span>
+                            <input className="w-full rounded-2xl border border-[#48363d] bg-[#2c2329] px-4 py-3 text-sm text-white outline-none transition focus:border-[#e9bfd0]" placeholder="you@example.com" />
+                          </label>
+                          <label className="block">
+                            <span className="mb-2 block text-sm font-semibold text-[#f5dfea]">Message</span>
+                            <textarea rows="5" className="w-full rounded-2xl border border-[#48363d] bg-[#2c2329] px-4 py-3 text-sm text-white outline-none transition focus:border-[#e9bfd0]" placeholder="Tell us about your ideal appointment" />
+                          </label>
+                          <button type="button" className="inline-flex items-center justify-center rounded-full bg-[#f2bfd1] px-6 py-3.5 text-sm font-bold text-[#2d1a1f] transition hover:bg-[#efb4c8]">Send Inquiry</button>
+                        </div>
+                      </form>
+
+                      <div className="rounded-[2rem] border border-[#3b2a32] bg-[#251d22] p-4 shadow-soft">
+                        <div className="flex h-full min-h-[320px] items-center justify-center rounded-[1.5rem] border border-dashed border-[#674e5d] bg-[#2d1f27] text-center text-sm text-[#e7cfda]">
+                          Map placeholder<br />Pin location here
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </main>
+
+            <footer className="border-t border-[#f1dfe6] bg-[#fffaf8]">
+              <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_0.8fr_1fr] lg:px-8">
+                <div>
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f7e2ea] text-base font-extrabold text-[#7d4258]">V</div>
+                    <div className="font-display text-2xl font-bold text-[#2b1d22]">Veloura</div>
+                  </div>
+                  <p className="mt-4 max-w-xs text-sm leading-7 text-sand-600">Elevated beauty experiences designed to make you feel radiant, confident, and cared for.</p>
+                </div>
+
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#9f6a82]">Quick links</p>
+                  <ul className="mt-4 space-y-3 text-sm text-sand-600">
+                    <li><a href="#services" className="hover:text-[#7d4258]">Services</a></li>
+                    <li><a href="#gallery" className="hover:text-[#7d4258]">Gallery</a></li>
+                    <li><a href="#about" className="hover:text-[#7d4258]">About</a></li>
+                    <li><a href="#contact" className="hover:text-[#7d4258]">Contact</a></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#9f6a82]">Contact</p>
+                  <ul className="mt-4 space-y-3 text-sm text-sand-600">
+                    <li>128 Rosewood Avenue</li>
+                    <li>hello@velourastudio.com</li>
+                    <li>(323) 555-0198</li>
+                  </ul>
+                </div>
+              </div>
+            </footer>
+
+            <button
+              type="button"
+              onClick={() => setChatOpen((prev) => !prev)}
+              className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#1b1116] text-2xl text-white shadow-glow transition hover:scale-105 hover:bg-[#2b1b21]"
+              aria-label="Open AI booking assistant"
+            >
+              ✦
+            </button>
+
+            {chatOpen && (
+              <div className="fixed bottom-24 right-6 z-50 w-[min(92vw,380px)] overflow-hidden rounded-[1.8rem] border border-[#f0dfe6] bg-white shadow-glow">
+                <div className="flex items-center justify-between border-b border-[#f3dee6] bg-[#fff4f8] px-4 py-3">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#9f6a82]">AI assistant</p>
+                    <p className="text-sm font-semibold text-[#2d1a1f]">Book with Veloura</p>
+                  </div>
+                  <button type="button" onClick={() => setChatOpen(false)} className="text-lg text-[#5e2d3d]">×</button>
+                </div>
+
+                <div className="chat-scroll flex max-h-[360px] flex-col gap-3 overflow-y-auto bg-[#fffaf8] p-4">
+                  {messages.map((msg, index) => (
+                    <div key={index} className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm leading-6 ${msg.sender === 'user' ? 'ml-auto bg-[#1b1116] text-white' : 'bg-[#f7e2ea] text-[#4d2a35]'}`}>
+                      {msg.text}
+                    </div>
+                  ))}
+                </div>
+
+                <form onSubmit={handleChatSubmit} className="border-t border-[#f3dee6] bg-white p-3">
+                  <div className="flex gap-2">
+                    <input
+                      value={chatInput}
+                      onChange={(e) => setChatInput(e.target.value)}
+                      placeholder="Ask about pricing or booking..."
+                      className="w-full rounded-full border border-[#ecdfe6] bg-[#fffaf9] px-4 py-2 text-sm outline-none focus:border-[#d98ca8]"
+                    />
+                    <button type="submit" className="rounded-full bg-[#d98ca8] px-4 py-2 text-sm font-bold text-white">Send</button>
+                  </div>
+                </form>
+              </div>
+            )}
+          </div>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+  </body>
+</html>
